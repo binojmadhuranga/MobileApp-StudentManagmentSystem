@@ -14,6 +14,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/screens/Home/Home';
 import AuthLoading from './src/screens/AuthLoading/AuthLoading';
 import Menu from './src/screens/Menu/Menu';
+import SaveStudent from './src/screens/SaveStudent/SaveStudent';
+
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Menu" component={Menu} />
+         <Stack.Screen name="SaveStudent" component={SaveStudent} />
       </Stack.Navigator>
     </NavigationContainer>
   );
