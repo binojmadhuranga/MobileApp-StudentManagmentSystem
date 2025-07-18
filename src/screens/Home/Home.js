@@ -34,10 +34,7 @@ const Home = () => {
 
     const handleLogout = async () => {
         Alert.alert('Logout', 'Are you sure you want to logout?', [
-            {
-                text: 'Cancel',
-                style: 'cancel',
-            },
+            { text: 'Cancel', style: 'cancel' },
             {
                 text: 'Logout',
                 style: 'destructive',
@@ -52,9 +49,9 @@ const Home = () => {
     if (showWelcome) {
         return (
             <SafeAreaView style={styles.welcomeContainer}>
-                <StatusBar barStyle="light-content" backgroundColor="#4F8EF7" />
+                <StatusBar barStyle="light-content" backgroundColor="#003366" />
                 <Animated.Text style={[styles.welcomeText, { transform: [{ translateX: slideAnim }] }]}>
-                    Hello Welcome!
+                    Welcome to Student Manager
                 </Animated.Text>
             </SafeAreaView>
         );
@@ -62,7 +59,7 @@ const Home = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor="#4F8EF7" />
+            <StatusBar barStyle="light-content" backgroundColor="#003366" />
 
             <View style={styles.logoutContainer}>
                 <TouchableOpacity onPress={handleLogout}>
@@ -71,15 +68,13 @@ const Home = () => {
             </View>
 
             <View style={styles.header}>
-                <Text style={styles.title}>Welcome Home!</Text>
-                <Text style={styles.subtitle}>Your productivity starts here.</Text>
+                <Text style={styles.title}>Student Management System</Text>
+                <Text style={styles.subtitle}>Manage students easily and efficiently</Text>
             </View>
             <Image
-                source={{
-                    uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-                }}
+                source={require('../../assets/logo.png')} // replace with your local icon or image
                 style={styles.image}
-                resizeMode="cover"
+                resizeMode="contain"
             />
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
                 <Text style={styles.buttonText}>Go to Menu</Text>
@@ -91,7 +86,7 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4F8EF7',
+        backgroundColor: '#003366',
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
@@ -111,51 +106,54 @@ const styles = StyleSheet.create({
     },
     welcomeContainer: {
         flex: 1,
-        backgroundColor: '#4F8EF7',
+        backgroundColor: '#003366',
         justifyContent: 'center',
         alignItems: 'center',
     },
     welcomeText: {
-        fontSize: 28,
+        fontSize: 26,
         fontWeight: 'bold',
-        color: '#fff',
-        letterSpacing: 2,
+        color: '#ffffff',
+        letterSpacing: 1.5,
     },
     header: {
         marginTop: 100,
         marginBottom: 20,
         alignItems: 'center',
+        paddingHorizontal: 20,
     },
     title: {
-        fontSize: 32,
-        color: '#fff',
+        fontSize: 28,
+        color: '#ffffff',
         fontWeight: 'bold',
-        letterSpacing: 1,
+        letterSpacing: 0.5,
+        textAlign: 'center'
     },
     subtitle: {
         fontSize: 16,
-        color: '#e2dbdbff',
-        marginTop: 8,
+        color: '#cfe2f3',
+        marginTop: 15,
+        textAlign: 'center',
     },
     image: {
-        width: 200,
-        height: 200,
+        width: 180,
+        height: 180,
         borderRadius: 150,
         marginVertical: 30,
+        backgroundColor: '#fff',
     },
     button: {
-        backgroundColor: '#fff',
-        paddingVertical: 14,
+        backgroundColor: '#ffffff',
+        paddingVertical: 12,
         paddingHorizontal: 40,
-        borderRadius: 30,
+        borderRadius: 25,
         elevation: 3,
         marginTop: 10,
     },
     buttonText: {
-        color: '#4F8EF7',
-        fontSize: 18,
+        color: '#003366',
+        fontSize: 16,
         fontWeight: 'bold',
-        letterSpacing: 1,
     },
 });
 

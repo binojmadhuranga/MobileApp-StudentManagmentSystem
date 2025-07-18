@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: '#4F8EF7',
+        color: '#003366',
     },
     input: {
         backgroundColor: '#fff',
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
     },
     button: {
-        backgroundColor: '#4F8EF7',
+        backgroundColor: '#003366',
         paddingVertical: 16,
         borderRadius: 10,
         marginTop: 20,

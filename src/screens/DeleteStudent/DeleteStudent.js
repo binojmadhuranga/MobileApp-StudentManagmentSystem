@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: '#4F8EF7',
+        color: '#003366',
     },
     input: {
         backgroundColor: '#fff',

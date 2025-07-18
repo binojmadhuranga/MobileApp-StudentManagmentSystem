@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     button: {
-        backgroundColor: '#007bff',
+        backgroundColor: '#003366',
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     registerNow: {
-        color: '#007bff',
+        color: '#003366',
         fontWeight: 'bold',
     },
 });

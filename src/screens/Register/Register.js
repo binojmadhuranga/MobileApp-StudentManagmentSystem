@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -27,14 +34,11 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Assuming the API returns success message or token etc.
         Alert.alert('Success', 'Registered successfully!');
-        // You might want to clear fields or navigate user here
         setName('');
         setEmail('');
         setPassword('');
       } else {
-        // Handle errors returned by the API
         Alert.alert('Registration Failed', data.message || 'Something went wrong!');
       }
     } catch (error) {
@@ -47,6 +51,7 @@ const Register = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Name"
@@ -69,7 +74,16 @@ const Register = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title={loading ? 'Registering...' : 'Register'} onPress={handleRegister} disabled={loading} />
+
+      <TouchableOpacity
+        style={[styles.button, loading && { opacity: 0.6 }]}
+        onPress={handleRegister}
+        disabled={loading}
+      >
+        <Text style={styles.buttonText}>
+          {loading ? 'Registering...' : 'Register'}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -94,6 +108,18 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 16,
     fontSize: 16,
+  },
+  button: {
+    backgroundColor: '#003366',
+    paddingVertical: 14,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
