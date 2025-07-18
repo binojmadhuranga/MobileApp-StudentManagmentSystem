@@ -36,7 +36,7 @@ function App() {
         <Stack.Screen name="SaveStudent" component={SaveStudent} />
         <Stack.Screen name="UpdateStudent" component={UpdateStudent} />
         <Stack.Screen name="DeleteStudent" component={DeleteStudent} />
-        {/* <Stack.Screen name="GetAllStudents" component={GetAllStudents} /> */}
+        <Stack.Screen name="GetAllStudents" component={GetAllStudents} />
       </Stack.Navigator>
     </NavigationContainer>
   );
