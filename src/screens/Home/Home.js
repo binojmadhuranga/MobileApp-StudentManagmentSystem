@@ -63,8 +63,7 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#4F8EF7" />
-            
-            {/* Logout Button */}
+
             <View style={styles.logoutContainer}>
                 <TouchableOpacity onPress={handleLogout}>
                     <Text style={styles.logoutText}>Logout</Text>
@@ -82,8 +81,8 @@ const Home = () => {
                 style={styles.image}
                 resizeMode="cover"
             />
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Get Started</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
+                <Text style={styles.buttonText}>Go to Menu</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
@@ -143,10 +142,6 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 150,
         marginVertical: 30,
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        shadowOffset: { width: 0, height: 4 },
     },
     button: {
         backgroundColor: '#fff',
