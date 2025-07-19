@@ -11,8 +11,6 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-
-
 const GetAllStudents = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,13 +21,12 @@ const GetAllStudents = () => {
 
             if (!token) {
                 Alert.alert('Error', 'User token not found. Please login again.');
-                setLoading(false);
                 return;
             }
 
             const response = await axios.get('https://student-api.acpt.lk/api/student/getAll', {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
             });
 

@@ -51,7 +51,7 @@ const Home = () => {
             <SafeAreaView style={styles.welcomeContainer}>
                 <StatusBar barStyle="light-content" backgroundColor="#003366" />
                 <Animated.Text style={[styles.welcomeText, { transform: [{ translateX: slideAnim }] }]}>
-                    Hello! Welcome 
+                    Hello! Welcome
                 </Animated.Text>
             </SafeAreaView>
         );
@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#ffffff',
         letterSpacing: 1.5,
+        fontStyle: 'italic',
+        fontFamily: 'serif',
     },
     header: {
         marginTop: 100,

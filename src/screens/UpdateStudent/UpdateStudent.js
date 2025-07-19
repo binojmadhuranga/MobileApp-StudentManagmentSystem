@@ -10,6 +10,7 @@ import {
     ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const UpdateStudent = () => {
     const [studentId, setStudentId] = useState('');
@@ -34,36 +35,33 @@ const UpdateStudent = () => {
 
             const url = `https://student-api.acpt.lk/api/student/update/${studentId}`;
 
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
+            await axios.put(
+                url,
+                {
                     student_name: studentName,
                     student_age: studentAge,
                     student_address: studentAddress,
-                    student_contact: studentContact
-                })
-            });
+                    student_contact: studentContact,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                }
+            );
 
-            const data = await response.json();
-
-            if (response.ok) {
-                Alert.alert('Success', 'Student updated successfully');
-                setStudentId('');
-                setStudentName('');
-                setStudentAge('');
-                setStudentAddress('');
-                setStudentContact('');
-            } else {
-                Alert.alert('Error', data.message || 'Failed to update student');
-            }
+            Alert.alert('Success', 'Student updated successfully');
+            setStudentId('');
+            setStudentName('');
+            setStudentAge('');
+            setStudentAddress('');
+            setStudentContact('');
 
         } catch (error) {
             console.error('Update Error:', error);
-            Alert.alert('Error', 'Something went wrong. Try again later.');
+            const message = error.response?.data?.message || 'Something went wrong. Try again later.';
+            Alert.alert('Error', message);
         }
     };
 
@@ -79,7 +77,6 @@ const UpdateStudent = () => {
                     onChangeText={setStudentId}
                     keyboardType="numeric"
                 />
-
                 <TextInput
                     style={styles.input}
                     placeholder="Student Name"

@@ -10,6 +10,7 @@ import {
     ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const SaveStudent = () => {
     const [studentName, setStudentName] = useState('');
@@ -31,35 +32,32 @@ const SaveStudent = () => {
                 return;
             }
 
-            const response = await fetch('https://student-api.acpt.lk/api/student/save', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
+            const response = await axios.post(
+                'https://student-api.acpt.lk/api/student/save',
+                {
                     student_name: studentName,
                     student_age: studentAge,
                     student_address: studentAddress,
-                    student_contact: studentContact
-                })
-            });
+                    student_contact: studentContact,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                }
+            );
 
-            const data = await response.json();
-
-            if (response.ok) {
-                Alert.alert('Success', 'Student saved successfully');
-                setStudentName('');
-                setStudentAge('');
-                setStudentAddress('');
-                setStudentContact('');
-            } else {
-                Alert.alert('Error', data.message || 'Failed to save student');
-            }
+            Alert.alert('Success', 'Student saved successfully');
+            setStudentName('');
+            setStudentAge('');
+            setStudentAddress('');
+            setStudentContact('');
 
         } catch (error) {
             console.error('Save Error:', error);
-            Alert.alert('Error', 'Something went wrong. Try again later.');
+            const message = error.response?.data?.message || 'Something went wrong. Try again later.';
+            Alert.alert('Error', message);
         }
     };
 

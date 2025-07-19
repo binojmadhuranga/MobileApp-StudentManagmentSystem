@@ -9,6 +9,7 @@ import {
     SafeAreaView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const DeleteStudent = () => {
     const [studentId, setStudentId] = useState('');
@@ -38,25 +39,19 @@ const DeleteStudent = () => {
 
                         const url = `https://student-api.acpt.lk/api/student/delete/${studentId}`;
 
-                        const response = await fetch(url, {
-                            method: 'DELETE',
+                        const response = await axios.delete(url, {
                             headers: {
                                 'Authorization': `Bearer ${token}`
                             }
                         });
 
-                        const data = await response.json();
-
-                        if (response.ok) {
-                            Alert.alert('Success', 'Student deleted successfully');
-                            setStudentId('');
-                        } else {
-                            Alert.alert('Error', data.message || 'Failed to delete student');
-                        }
+                        Alert.alert('Success', 'Student deleted successfully');
+                        setStudentId('');
 
                     } catch (error) {
                         console.error('Delete Error:', error);
-                        Alert.alert('Error', 'Something went wrong. Try again later.');
+                        const message = error.response?.data?.message || 'Something went wrong. Try again later.';
+                        Alert.alert('Error', message);
                     }
                 }
             }
